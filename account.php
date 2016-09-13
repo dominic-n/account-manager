@@ -8,7 +8,6 @@
 date_default_timezone_set("Africa/Nairobi");
 if(!file_exists('set'))
 {
-	//die("<meta http-equiv='refresh content='0; url=/config.php' />");
 	die('<meta http-equiv="refresh" content=".1; url=./config.php" />');
 }
 	
