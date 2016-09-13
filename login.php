@@ -54,7 +54,7 @@ if(isset($_REQUEST['login']))
 	while($ind = $all->fetch_assoc())
 	{
 		
-		if($ind['usern'] === $_REQUEST['user'] && $ind['passw'] === $_REQUEST['password'])
+		if($ind['usern'] === $_REQUEST['user'] && md5($ind['passw']) === $_REQUEST['password'])
 		{
 			$none = 0;
 			$_SESSION['user'] = $_REQUEST['user'];
@@ -69,7 +69,7 @@ if(isset($_REQUEST['login']))
 			$sql = "INSERT INTO monuser (usern,passw,edit) VALUES ('".$_REQUEST['user']."','".$_REQUEST['password']."','false')";
 			$conn->query($sql) or die ("Could not Enter details into database..".$conn->error. "<br />");
 			$_SESSION['user'] = $_REQUEST['user'];
-			$_SESSION['passw'] = $_REQUEST['password'];
+			$_SESSION['passw'] = md5($_REQUEST['password']);
 			$_SESSION['edit'] = 'false';
 			die ("<meta http-equiv='refresh' content='.1; url=./account.php' />");
 	}
